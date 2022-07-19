@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -15,7 +16,7 @@ public class GeradoraDeFigurinhas {
     public void cria() throws Exception {
 
         // Leitura da imagem
-        InputStream inputStream = new FileInputStream(new File("entrada/filme-maior.jpg");
+        InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg").openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
 
         // Cria nova imagem com transparência e com tamanho novo
