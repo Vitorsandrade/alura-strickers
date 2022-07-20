@@ -8,12 +8,12 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinhas {
-    
 
     public void cria(InputStream inputStream, String nomeArquivo) throws Exception {
 
         // Leitura da imagem
-        // InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg").openStream();
+        // InputStream inputStream = new
+        // URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg").openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
 
         // Cria nova imagem com transparência e com tamanho novo
@@ -32,8 +32,7 @@ public class GeradoraDeFigurinhas {
         graphics.setColor(Color.GREEN);
 
         // Escrever uma frase na nova imagem
-        graphics.drawString("TOPZERA", largura/4 -20 , novaAltura - 80 );
-
+        graphics.drawString("TOPZERA", largura / 4 - 20, novaAltura - 80);
 
         // Escrever a nova imagem em um arquivo
         ImageIO.write(novaImagem, "png", new File(nomeArquivo));

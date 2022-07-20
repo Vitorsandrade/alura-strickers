@@ -1,7 +1,7 @@
 public class Conteudo {
-    
+
     private final String titulo;
-    
+
     private final String urlImagem;
 
     public Conteudo(String titulo, String urlImagem) {
@@ -16,6 +16,5 @@ public class Conteudo {
     public String getUrlImagem() {
         return urlImagem;
     }
-
 
 }

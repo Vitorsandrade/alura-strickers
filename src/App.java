@@ -1,7 +1,6 @@
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -13,11 +12,9 @@ public class App {
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
-
         // Exibir e manipular os dados
-        ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
+        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
         List<Conteudo> conteudos = extrator.extraiConteudos(json);
-
 
         GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
 
