@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -21,13 +23,24 @@ public class App {
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
         // Exibir e manipular os dados
-        for ( Map<String, String> filme: listaDeFilmes) {
-            System.out.println("\u001b[3mTítulo: \u001b[m\u001b[1m"+ filme.get("title")+ "\u001b[m");
-            System.out.println("\u001b[3mPoster: \u001b[m\u001b[1m"+ filme.get("image")+ "\u001b[m");
-            System.out.println("\u001b[45m\u001b[3mClassificação: \u001b[m\u001b[45m\u001b[1m"+ filme.get("imDbRating")+ " \u001b[m");
+        GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
+
+        for (Map<String, String> filme : listaDeFilmes) {
+
+            String urlImage = filme.get("image");
+            InputStream inputStream = new URL(urlImage).openStream();
+
+            String titulo = filme.get("title");
+            String nomeArquivo = titulo  + ".pnj";
+            geradora.cria(inputStream, nomeArquivo);
+
+            System.out.println("\u001b[3mTítulo: \u001b[m\u001b[1m" + titulo + "\u001b[m");
+    //      System.out.println("\u001b[3mPoster: \u001b[m\u001b[1m" + filme.get("image") + "\u001b[m");
+            System.out.println("\u001b[45m\u001b[3mClassificação: \u001b[m\u001b[45m\u001b[1m" + filme.get("imDbRating")
+                    + " \u001b[m");
             int classificacao = (int) Float.parseFloat(filme.get("imDbRating"));
-            String stars = "";            
-            for(int i = 0; i<classificacao; i++) {
+            String stars = "";
+            for (int i = 0; i < classificacao; i++) {
                 stars = stars + "\u2B50";
             }
             System.out.println(stars);
