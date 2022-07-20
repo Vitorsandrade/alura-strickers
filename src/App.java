@@ -15,22 +15,21 @@ public class App {
 
 
         // Exibir e manipular os dados
+        ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
+        List<Conteudo> conteudos = extrator.extraiConteudos(json);
+
+
         GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
 
         for (int i = 0; i < 3; i++) {
 
-            Map<String, String> conteudo = listaDeConteudos.get(i);
+            Conteudo conteudo = conteudos.get(i);
 
-            String urlImage =
-                    // conteudo.get("image")
-                    conteudo.get("url")
-                            .replaceAll("(@+)(.*).jpg$", "$1.jpg");
-
-            InputStream inputStream = new URL(urlImage).openStream();
-            String nomeArquivo = "saida/" + titulo + ".png";
+            InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
+            String nomeArquivo = "saida/" + conteudo.getTitulo() + ".png";
             geradora.cria(inputStream, nomeArquivo);
 
-            System.out.println(titulo);
+            System.out.println(conteudo.getTitulo());
             System.out.println();
         }
 
